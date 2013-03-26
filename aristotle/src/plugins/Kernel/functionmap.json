@@ -1,0 +1,4 @@
+{
+	"what time is it?": "Kernel::Time::current",
+	"what time is it in {loc}?": "Kernel::Time::atLocation"
+}
