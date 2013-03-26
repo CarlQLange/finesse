@@ -6,6 +6,7 @@ exports.ask = function (toUnderstand) {
 	client.write(toUnderstand);
 	client.on('data', function (data) {
 		console.log(data.toString());
+		console.log(JSON.parse(data).data);
 		process.exit();
 	});
 }

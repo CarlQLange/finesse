@@ -1,5 +1,5 @@
 {
-  "name": "finesse",
+  "name": "finesse-cli",
   "version": "0.0.0",
   "description": "the cli client for finesse",
   "main": "index.js",

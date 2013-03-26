@@ -7,18 +7,26 @@ exports.understand = function (toUnderstand, cb) {
 	var pluginPath = '/Users/carllange/workspace/js/finesse/aristotle/src/plugins/'; 
 	var plugins = fs.readdirSync(pluginPath);
 	var functionmap = {};
-	var possibles = {};
+	var possibles = [];
 	for (var dir in plugins) {
 		functionmap = JSON.parse(fs.readFileSync(pluginPath + plugins[dir] + "/functionMap.json"));
 		for (var possibleMatch in functionmap) {
-			possibles[functionmap[possibleMatch]] = match(toUnderstand, possibleMatch)
+			possibles.push({
+				func: functionmap[possibleMatch],
+				likelihood: match(toUnderstand, possibleMatch)
+			})
 		}
 	}
 	
 	results.allPossibles = possibles;
 
-	//should do better sort stuff here
-	results.data = call(Object.keys(possibles).sort()[Object.keys(possibles).length-1]);
+	var mostLikely = possibles.sort(function (a, b) {
+		return a.likelihood < b.likelihood;
+	})[0];
+
+	results.mostLikely = mostLikely;
+
+	results.data = results.mostLikely.likelihood > 0.7 ? call(results.mostLikely.func) : null;
 
 	cb(results);
 }
@@ -26,6 +34,8 @@ exports.understand = function (toUnderstand, cb) {
 function match (toUnderstand, possibleMatch) {
 	if (toUnderstand == possibleMatch) { 
 		return 1.0; //um
+	} else {
+		return 0.0;
 	}
 }
 

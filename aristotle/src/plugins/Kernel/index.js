@@ -5,6 +5,12 @@ exports.Time = {
 		return "BREAKFAST O'CLOCK";
 	},
 	atLocation: function (opts) {
-		return "IT'S BITCH O'CLOCK AT " + opts.loc;
+		return "IT'S BREAKFAST O'CLOCK AT " + opts.loc;
+	}
+};
+
+exports.Aristotle = {
+	restart: function () {
+		process.exit(42);
 	}
 }
