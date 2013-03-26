@@ -1,15 +1,16 @@
-var fs = require('fs')
+var fs = require('fs');
+var path = require('path');
 
 exports.understand = function (toUnderstand, cb) {
 	var results = {};
 	results.origin = toUnderstand;
 
-	var pluginPath = '/Users/carllange/workspace/js/finesse/aristotle/src/plugins/'; 
+	var pluginPath = path.join(process.cwd(), 'src', 'plugins');
 	var plugins = fs.readdirSync(pluginPath);
 	var functionmap = {};
 	var possibles = [];
 	for (var dir in plugins) {
-		functionmap = JSON.parse(fs.readFileSync(pluginPath + plugins[dir] + "/functionMap.json"));
+		functionmap = JSON.parse(fs.readFileSync(path.join(pluginPath, plugins[dir], "functionMap.json")));
 		for (var possibleMatch in functionmap) {
 			possibles.push({
 				func: functionmap[possibleMatch],
