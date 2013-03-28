@@ -12,10 +12,13 @@ exports.understand = function (toUnderstand, cb) {
 	for (var dir in plugins) {
 		functionmap = JSON.parse(fs.readFileSync(path.join(pluginPath, plugins[dir], "functionMap.json")));
 		for (var possibleMatch in functionmap) {
-			possibles.push({
-				func: functionmap[possibleMatch],
-				likelihood: match(toUnderstand, possibleMatch)
-			})
+			var interpretations = functionmap[possibleMatch].interpretations;
+			for (var interpretation in interpretations) {
+				possibles.push({
+					func: possibleMatch,
+					likelihood: match(toUnderstand, interpretations[interpretation])
+				});
+			}
 		}
 	}
 	

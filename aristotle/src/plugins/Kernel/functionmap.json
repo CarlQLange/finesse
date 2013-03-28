@@ -1,5 +1,20 @@
 {
-	"what time is it?": "Kernel::Time::current",
-	"what time is it in {loc}?": "Kernel::Time::atLocation",
-	"restart yourself": "Kernel::Aristotle::restart"
+	"Kernel::Time::current": {
+		"interpretations": [
+			"What time is it?",
+			"What's the time?",
+			"What time are we?"
+		]
+	},
+	"Kernel::Time::atLocation": {
+		"interpretations": [
+			"What time is it in {loc}?"
+		]
+	},
+	"Kernel::Aristotle::restart": {
+		"interpretations": [
+			"restart",
+			"restart yourself"
+		]
+	}
 }
