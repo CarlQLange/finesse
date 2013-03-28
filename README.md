@@ -15,6 +15,8 @@ That is, it was a CLI controller that took a string, parsed it into some command
 
 That's pretty much what finesse is going to be, except finesse has some important differences.
 
+# DISCLAIMER: Most of this is bullshit
+
 ####Strict backend-frontend seperation
 finesse's frontend(s) ask or tell the backend to do something, and the backend returns a bunch of data. The frontends all use the same interface. This way, it's possible to test finesse on the command-line, although the main frontend will be a web page. However, the frontends are allowed have different functionality.
 
